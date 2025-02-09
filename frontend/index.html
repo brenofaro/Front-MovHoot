@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jogar - MovHoot</title>
+<link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <h1>MovHoot</h1>
+    <form id="loginForm">
+      <!-- Campo para nome de usuário -->
+      <div class="form-group">
+        <label for="username">Nome de Usuário</label>
+        <input type="text" id="username" name="username" placeholder="Seu nome" required>
+      </div>
+      
+      <!-- Seleção do tipo de usuário -->
+      <div class="form-group">
+        <label>Tipo de Usuário:</label>
+        <div class="role-selection">
+          <label>
+            <input type="radio" name="role" value="admin" required> Admin
+          </label>
+          <label>
+            <input type="radio" name="role" value="user" required> Usuário
+          </label>
+        </div>
+      </div>
+      
+      <!-- Campo para o Pin da Sala -->
+      <div class="form-group" id="roomPinGroup">
+        <label for="roomPin" id="roomPinLabel">Pin da Sala</label>
+        <input type="text" id="roomPin" name="roomPin" placeholder="Digite o pin da sala">
+      </div>
+      
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+  
+  <script>
+    // Seleciona os elementos do formulário
+    const roleInputs = document.querySelectorAll('input[name="role"]');
+    const roomPinLabel = document.getElementById('roomPinLabel');
+    const roomPinInput = document.getElementById('roomPin');
+
+    // Ajusta o campo "Pin da Sala" conforme o tipo de usuário selecionado
+    function adjustRoomPinField() {
+      const selectedRole = document.querySelector('input[name="role"]:checked');
+      if (selectedRole) {
+        if (selectedRole.value === 'admin') {
+          // Para admin: gera um pin automaticamente e define o campo como somente leitura
+          roomPinInput.value = generateRoomPin();
+          roomPinInput.readOnly = true;
+          roomPinLabel.textContent = "Pin da Sala (Gerado)";
+        } else {
+          // Para usuário comum: campo vazio e editável
+          roomPinInput.value = "";
+          roomPinInput.placeholder = "Digite o pin da sala";
+          roomPinInput.readOnly = false;
+          roomPinLabel.textContent = "Pin da Sala";
+        }
+      }
+    }
+
+    // Função para gerar um pin aleatório de 4 dígitos
+    function generateRoomPin() {
+      return Math.floor(1000 + Math.random() * 9000);
+    }
+
+    // Adiciona o evento de mudança nos radios
+    roleInputs.forEach(input => {
+      input.addEventListener('change', adjustRoomPinField);
+    });
+
+    // Evento de submissão do formulário
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Coleta os dados do formulário
+      const username = document.getElementById('username').value;
+      const role = document.querySelector('input[name="role"]:checked').value;
+      const roomPin = roomPinInput.value;
+      
+      console.log("Dados de Login:", { username, role, roomPin });
+      
+      // Exibe uma mensagem de boas-vindas e redireciona para o jogo (página protótipo)
+      //alert(`Bem-vindo, ${username}!\nTipo: ${role}\nPin da Sala: ${roomPin}\n\nRedirecionando para o jogo...`);
+      window.location.href = "game.html"; // Altere para a rota da página do jogo
+    });
+  </script>
+</body>
+</html>

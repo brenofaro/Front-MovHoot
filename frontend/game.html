@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz Game</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Container onde o canvas do Phaser será injetado -->
+  <div id="game-container"></div>
+  
+  <!-- Área de chat para interação entre os jogadores (placeholder) -->
+  <div id="chat-container">
+    <ul id="chat-messages"></ul>
+    <input type="text" id="chat-input" placeholder="Digite sua mensagem">
+    <button id="chat-send">Enviar</button>
+  </div>
+
+  <!-- Carrega o Phaser (versão 3) -->
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
+  <!-- Carrega o script principal como módulo -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
