@@ -6,7 +6,7 @@ export default class MainScene extends Phaser.Scene {
   
     preload() {
       // Carrega os assets (certifique-se de que os arquivos existem na pasta "assets")
-      this.load.image('background', 'assets/background.png');
+      this.load.image('background', 'assets/bg.png');
       this.load.image('player', 'assets/player.png');
     }
   
