@@ -5,6 +5,8 @@ import { GameOver } from './scenes/GameOver';
 import { MainMenu } from './scenes/MainMenu';
 import { Preloader } from './scenes/Preloader';
 
+import Chat from './Chat';
+
 import { Game, Types } from "phaser";
 import { FinalScene } from './scenes/FinalScene';
 
@@ -32,8 +34,10 @@ const config: Types.Core.GameConfig = {
         MainMenu,
         MainScene,
         FinalScene,
-        GameOver
     ]
 };
+
+// Instancia o chat
+const chat = new Chat();
 
 export default new Game(config);

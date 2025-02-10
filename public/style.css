@@ -13,3 +13,55 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+/* assets/style.css */
+#chat-container {
+    color: black;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 320px;
+    height: 400px; /* altura fixa */
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Área das mensagens (rolável) */
+#chat-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Área de entrada (input + botão) */
+  #chat-input-area {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  /* Input do chat */
+  #chat-input {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Botão de enviar */
+  #chat-send {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    background: #028af8;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+  }

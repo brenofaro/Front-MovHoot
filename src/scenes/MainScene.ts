@@ -131,13 +131,8 @@ export class MainScene extends Phaser.Scene {
     // Inicia a contagem regressiva
     this.startCountdown();
 
-    // Permite que o jogador selecione a resposta pressionando ENTER (quando a questão estiver ativa)
-    this.input.keyboard!.on('keydown-ENTER', () => {
-      if (this.questionActive) {
-        const selectedAnswer = this.getSelectedAnswer();
-        this.processAnswer(selectedAnswer);
-      }
-    });
+    // Removida a funcionalidade de selecionar a resposta com ENTER,
+    // pois o próprio tempo (countdown) definirá a resposta automaticamente.
 
     // Atualiza as posições dos elementos se a janela for redimensionada
     this.scale.on('resize', this.resize, this);
@@ -344,9 +339,9 @@ export class MainScene extends Phaser.Scene {
     // Neste exemplo, criamos um objeto de pontuação final. Em um jogo multiplayer real,
     // os dados viriam do servidor ou de um sistema de gerenciamento do lobby.
     const finalScores = { 
-                          'Jogador 1': this.score,
-                          'Jogador 2': 2,
-                          'Jogador 3': 1
+      'Jogador 1': this.score,
+      'Jogador 2': 2,
+      'Jogador 3': 1
     };
     this.scene.start('FinalScene', { scores: finalScores });
   }
